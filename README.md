@@ -31,9 +31,10 @@ Is an external service exposing HTTP REST API to be used to get USD/BRL exchange
 
 ## Running examples
 
-Quickest way to try out examples is to run them with Docker Compose
+Quickest way to try out Splitfy application is to:
 
-`$ docker-compose up`
+1. Clone components repos (`puc-rio-frontend` and `puc-rio-backend`) and compose repo to the same folder
+1. Run `$ docker-compose up`
 
 Wait until all services are up and Splitfy front-end will be available on port 3000. You can play with the application from there.
 
