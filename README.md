@@ -33,7 +33,7 @@ Is an external service exposing HTTP REST API to be used to get USD/BRL exchange
 
 Quickest way to try out examples is to run them with Docker Compose
 
-`$ /usr/lib/docker/cli-plugins/docker-compose up`
+`$ docker-compose up`
 
 Wait until all services are up and Splitfy front-end will be available on port 3000. You can play with the application from there.
 
