@@ -1,12 +1,39 @@
 # Splitfy
 services:
+  db:
+    container_name: splitfy-backend-db
+    image: postgres:16.3
+    user: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: postgres
+      POSTGRES_DB: splitfy
+    ports:
+      - "5432:5432" 
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 1s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - ./postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    
   api:
     container_name: splitfy-backend
     image: splitfy-backend:latest
     build: ../puc-rio-backend
-    ports:
-        - "5000:5000"
     restart: always
+    ports:
+        - "5000:5000"  
+    environment:
+      - DB_URL=postgresql://postgres:password@db:5432/splitfy
+      - PGPASSWORD=password
+    links:
+      - db
+    depends_on:
+      db:
+        condition: service_healthy
 
   web:
     container_name: splitfy-frontend
@@ -16,7 +43,7 @@ services:
         - "3000:3000"
     restart: always
     environment:
-      - REACT_APP_VERSION=v0.1.0
-      - GENERATE_SOURCEMAP=false
+      REACT_APP_VERSION: v0.1.0
+      GENERATE_SOURCEMAP: false
     depends_on:
       - api
