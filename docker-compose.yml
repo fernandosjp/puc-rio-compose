@@ -28,7 +28,6 @@ services:
         - "5000:5000"  
     environment:
       - DB_URL=postgresql://postgres:password@db:5432/splitfy
-      - PGPASSWORD=password
     links:
       - db
     depends_on:
