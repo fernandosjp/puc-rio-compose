@@ -2,6 +2,8 @@
 
 ![Splitfy](logo.png)
 
+The objetive of this application is to help people manage their personal finances keeping track of expenses and controlling agains their monthly budget.
+
 ## Prerequisites
 
 * [Python 3](https://www.python.org/downloads/)
@@ -33,8 +35,9 @@ Is an external service exposing HTTP REST API to be used to get USD/BRL exchange
 
 Quickest way to try out Splitfy application is to:
 
-1. Clone components repos (`puc-rio-frontend` and `puc-rio-backend`) and compose repo to the same folder
-1. Run `$ docker-compose up`
+1. Clone components repos (`puc-rio-frontend` and `puc-rio-backend`) and compose repo into the same folder
+1. Create `.env` file with variable `OPEN_FOREX_KEY` containing the Open Exchange Rates API `App ID`
+1. Run `docker-compose up`
 
-Wait until all services are up and Splitfy front-end will be available on port 3000. You can play with the application from there.
+Wait until all services are up and Splitfy front-end will be available on port 3000 and backend on port 5000. You can play with the application from there.
 
